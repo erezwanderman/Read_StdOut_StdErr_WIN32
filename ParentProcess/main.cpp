@@ -94,11 +94,12 @@ static std::pair<std::vector<char>, std::vector<char>> CreateProcessAndGetOutput
 	// Nothing to write
 	CHECK_WIN32_ERROR(CloseHandle(g_hChildStd_IN_Wr));
 
-	std::vector<char> tempOut, tempErr;
 	std::vector<std::vector<char>> stdOutErrVecs = ReadFromMultiplePipes({ g_hChildStd_OUT_Rd, g_hChildStd_ERR_Rd });
 
 	CHECK_WIN32_ERROR(CloseHandle(g_hChildStd_OUT_Rd));
+	g_hChildStd_OUT_Rd = nullptr;
 	CHECK_WIN32_ERROR(CloseHandle(g_hChildStd_ERR_Rd));
+	g_hChildStd_ERR_Rd = nullptr;
 
 	return std::make_pair(stdOutErrVecs[0], stdOutErrVecs[1]);
 }
