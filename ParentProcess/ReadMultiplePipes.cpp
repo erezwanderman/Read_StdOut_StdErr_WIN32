@@ -27,7 +27,7 @@ struct ReadPipeInfo
 	UCHAR buf[1024 * 4] = {};
 	// 0   - open
 	// 997 - ERROR_IO_PENDING  - Overlapped I/O operation is in progress.
-	// 107 - ERROR_BROKEN_PIPE - The pipe has been ended.
+	// 109 - ERROR_BROKEN_PIPE - The pipe has been ended.
 	DWORD state = 0;
 };
 
